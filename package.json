@@ -2,21 +2,24 @@
   "name": "ttt_api_gateway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "start": "node src/dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q src/dist/index.js\""
   },
   "keywords": [],
   "author": "Vladyslav Kotliar",
   "license": "MIT",
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.14",
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.1.2",
     "concurrently": "^8.0.1",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.12.4",
     "nodemon": "^2.0.22",
     "typescript": "^5.0.4"
   }
