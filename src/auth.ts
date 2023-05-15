@@ -1,19 +1,17 @@
 import {
-    ServerUnaryCall,
-    sendUnaryData,
-    Server,
-    ServerCredentials,
+  ServerUnaryCall,
+  sendUnaryData,
 } from '@grpc/grpc-js';
 
-import { IAuthServer } from "./proto/services/auth/v1/auth_service_grpc_pb";
-import { 
+import { IAuthServer } from "./proto/auth_service_grpc_pb";
+import {
   SignUpRequest,
   SignUpResponse,
   SignInRequest,
   SignInResponse,
   RefreshTokenRequest,
   RefreshTokenResponse
-} from "./proto/services/auth/v1/auth_service_pb"
+} from "./proto/auth_service_pb"
 
 
 export const AuthServer: IAuthServer = {
@@ -38,4 +36,3 @@ export const AuthServer: IAuthServer = {
     callback(null, response);
   },
 }
-

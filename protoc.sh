@@ -1,18 +1,19 @@
 #!/bin/bash
-readonly PROTO_DIR="./src/proto"
+readonly DIST="./dist/proto"
+readonly SRC="./src/proto"
 
-# auth_service
-readonly AUTH_PATH="./proto/services/auth/v1/auth_service.proto"
+mkdir ${DIST}
+mkdir ${SRC}
 
 npx grpc_tools_node_protoc \
-    --js_out=import_style=commonjs,binary:${PROTO_DIR} \
-    --grpc_out=grpc_js:${PROTO_DIR} \
+    --js_out=import_style=commonjs,binary:${DIST} \
+    --grpc_out=grpc_js:${DIST} \
     --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin \
     -I ./proto \
-    ${AUTH_PATH} 
+    proto/*.proto
 
 npx grpc_tools_node_protoc \
     --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \
-    --ts_out=grpc_js:${PROTO_DIR} \
+    --ts_out=grpc_js:${SRC} \
     -I ./proto \
-    ${AUTH_PATH}
+    proto/*.proto
